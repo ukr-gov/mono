@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/realms/greencity/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8080/realms/greencity
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/greencity}
+    username: ${POSTGRES_USERNAME:postgres}
+    password: ${POSTGRES_PASSWORD:buRishRANsumeLiV}
+    driver-class-name: org.postgresql.Driver
+
+token:
+  converter:
+    principal-attribute: preferred_username
+    resource-id: mono
